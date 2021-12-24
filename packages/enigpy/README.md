@@ -1,3 +1,3 @@
 # Enigpy
 
-## Python package to run Enigma clusters
+#### Python package to run Enigma clusters
