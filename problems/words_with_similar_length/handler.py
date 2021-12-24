@@ -1,5 +1,5 @@
-from enipy import EnigmaApp, EnigmaMapper, EnigmaReducer, EnigmaShuffler
-from enipy.datasource import get_map_data, get_reduce_data, get_shuffle_data
+from enigpy import EnigmaApp, EnigmaMapper, EnigmaReducer, EnigmaShuffler
+from enigpy.datasource import get_map_data, get_reduce_data, get_shuffle_data
 
 class MyMapper(EnigmaMapper):
     def map(self):
