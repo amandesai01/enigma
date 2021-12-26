@@ -9,4 +9,3 @@ WORKDIR /runtime
 RUN mkdir enigpy
 
 COPY packages/enigpy/* /runtime/enigpy
-
