@@ -6,10 +6,10 @@ RUN apk update
 
 RUN apk add wget
 
-COPY runtimes/python/* /runtime
+COPY runtimes/python /runtime
 
 WORKDIR /runtime
 
 RUN mkdir enigpy
 
-COPY packages/enigpy/* /runtime/enigpy
+COPY packages/enigpy /runtime/enigpy
