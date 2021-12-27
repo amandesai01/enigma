@@ -1,3 +1,11 @@
 __pycache__
 .env
 .ds_store
+
+node_modules
+
+.nuxt
+dist
+build/*
+!build/icons
+node_modules
