@@ -1,0 +1,108 @@
+{
+    "api":"/auth/login",
+    "method":"POST",
+    "body":{
+
+    },
+    "response":{
+        "STATUS":"OK"
+    }
+},
+{
+    "api":"/auth/register",
+    "method":"POST",
+    "body":{
+        
+    },
+    "response":{
+        "STATUS":"OK"
+    }
+},
+{
+    "api":"/upload-file",
+    "method":"POST",
+    "body":{
+        "file":"file",
+    },
+    "response":{
+        "STATUS":"OK",
+        "file_id":"id"
+    }
+},
+{
+    "api":"/task/create-task",
+    "method":"POST",
+    "body":{
+        "task_name":"text",
+        "task_description":"text",
+        "task_zip_file_id":"id",
+        "datasource_file":"file",
+    },
+    "response":{
+        "STATUS":"OK"
+    }
+},
+{
+    "api":"/task/get-my-tasks",
+    "method":"POST",
+    "body":{},
+    "response":{
+        "STATUS":"OK",
+        "myTasks": [{},{}]
+    }
+},
+{
+    "api":"/task/:id",
+    "method":"GET",
+    "body":{},
+    "response":{
+        "STATUS":"OK",
+        "task": {}
+    }
+},
+{
+    "api":"/worker/allot-me",
+    "method":"POST",
+    "body":{},
+    "response":{
+        "STATUS":"OK",
+        "data": {
+            "step_id":"id",
+            "phase":"phase",
+            "zip_file_url":"url",
+            "data_source_url":"url"
+        }
+    }
+},
+{
+    "api":"/worker/submit-result",
+    "method":"POST",
+    "body":{},
+    "response":{
+        "STATUS":"OK",
+        "data": {
+            "step_id":"id",
+            "phase":"phase",
+            "result_file_id":"id"
+        }
+    }
+},
+{
+    "api":"/worker/earning",
+    "method":"GET",
+    "body":{},
+    "response":{
+        "STATUS":"OK",
+        "data": {
+            "earning_details":""
+        }
+    }
+},
+{
+    "api":"/worker/withdraw",
+    "method":"POST",
+    "body":{},
+    "response":{
+        "STATUS":"OK",
+    }
+},
