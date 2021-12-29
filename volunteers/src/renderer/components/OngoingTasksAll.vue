@@ -8,7 +8,7 @@
                 </figure>
             </div>
             <div class="media-content">
-                <p class="title is-4" style="color: aqua;"> 3 Tasks</p>
+                <p class="title is-4" style="color: aqua;"> 3 Computations</p>
                 <p class="subtitle is-6" style="color: aqua;">Ongoing</p>
             </div>
         </div>

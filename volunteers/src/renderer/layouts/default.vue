@@ -10,11 +10,14 @@
             </b-navbar-item>
         </template>
         <template #start>
-            <b-navbar-item href="#">
-                📥&nbsp;&nbsp;Tasks
+            <b-navbar-item tag="router-link" :to="{ path: '/tasks/all' }">
+                📥&nbsp;&nbsp;Computations
             </b-navbar-item>
-            <b-navbar-item href="#">
+            <b-navbar-item tag="router-link" :to="{ path: '/transactions' }">
                 💰&nbsp;&nbsp;Transactions
+            </b-navbar-item>
+            <b-navbar-item tag="router-link" :to="{ path: '/settings' }">
+                ⚙️&nbsp;&nbsp;Settings
             </b-navbar-item>
         </template>
 
