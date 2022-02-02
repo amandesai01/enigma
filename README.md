@@ -9,7 +9,7 @@ owned by people and acts as a bridge between developers and users.</b></center>
 ● Enigma Software - For Users ( usually non technical people.) <br>
 
 ### System Design:
---> Insert Image Here
+![Proposed System Design](https://user-images.githubusercontent.com/39585600/152122506-8b10d09b-eef9-448a-afdc-54f140dce2b3.jpg)
 
 ### Working explained in this video:
 --> YT link here
