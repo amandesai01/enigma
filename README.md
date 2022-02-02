@@ -12,5 +12,5 @@ owned by people and acts as a bridge between developers and users.</b></center>
 ![Proposed System Design](https://user-images.githubusercontent.com/39585600/152122506-8b10d09b-eef9-448a-afdc-54f140dce2b3.jpg)
 
 ### Working explained in this video:
---> YT link here
+https://drive.google.com/file/d/1RZ7CUoNWS8H8RtCi0hYofyGcT1v6P9WE/view?usp=drivesdk
 
