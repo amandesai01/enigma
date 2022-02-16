@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -29,6 +31,9 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  const [errors, setErrors] = React.useState([])
+  let history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -37,6 +42,29 @@ export default function Login() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    const dataForApi = {
+      email: data.get('email'),
+      password: data.get('password'),
+    }
+
+    axios.post('http://127.0.0.1:5000/authenticate/user', dataForApi)
+        .then(response => {
+          console.log(response)
+          const { STATUS, MSG, TOKEN } = response.data
+          if(STATUS == "FAIL") {
+            setErrors([MSG])
+            console.log(MSG)
+          }
+          else if(STATUS == "OK") {
+            const { USERNAME, EMAIL } = response.data
+            localStorage.setItem("TOKEN", TOKEN)
+            localStorage.setItem("USER", JSON.stringify({ USERNAME, EMAIL }))
+            setTimeout(() => history.push("/main"), 500)
+            
+          }
+          
+        });
   };
 
   return (
@@ -58,6 +86,11 @@ export default function Login() {
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <div>
+            {errors.map(e => {
+              return <p>{e}</p>
+            })}
+          </div>
             <TextField
               margin="normal"
               required

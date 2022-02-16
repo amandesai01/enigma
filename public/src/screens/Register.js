@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -29,14 +31,38 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register() {
+
+  const [formErrors, setFormErrors] = React.useState([])
+  let history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
+    
+    const dataForApi = {
+      username: data.get('userName'),
       email: data.get('email'),
       password: data.get('password'),
-    });
+    }
+
+    axios.post('http://127.0.0.1:5000/authenticate/user/new', dataForApi)
+        .then(response => {
+          console.log(response)
+          const { STATUS, MSG, TOKEN } = response.data
+          if(STATUS == "FAIL") {
+            setFormErrors([MSG])
+            console.log(MSG)
+          }
+          else if(STATUS == "OK") {
+            const { USERNAME, EMAIL } = response.data
+            localStorage.setItem("TOKEN", TOKEN)
+            localStorage.setItem("USER", JSON.stringify({ USERNAME, EMAIL }))
+            setTimeout(() => history.push("/main"), 500)
+          }
+          
+        });
+
   };
 
   return (
@@ -58,26 +84,21 @@ export default function Register() {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <div>
+            {formErrors.map(e => {
+              return <p>{e}</p>
+            })}
+          </div>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="userName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="userName"
+                  label="Username"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
