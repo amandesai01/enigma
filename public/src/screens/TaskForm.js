@@ -19,9 +19,8 @@ function TaskForm() {
     const formData = new FormData();
     formData.append("zip_file", f);
 
-    setTimeout(() => {
-      return "randomZipFileId"
-    },1000)
+    return "randomZipFileId"
+    
 
     // Uncomment this and replace AAAAAA in below line with actual API
     // const response = await axios.post('http://127.0.0.1:5000/AAAAAA', formData, {headers})
@@ -49,6 +48,7 @@ function TaskForm() {
     formData.append("task_name", taskName);
     formData.append("task_description", taskDescription);
     formData.append("task_zip_file_id", task_zip_file_id);
+    formData.append("datasource_size", 20)
     
     axios.post('http://127.0.0.1:5000/newtask', formData, {headers})
     .then(response => {

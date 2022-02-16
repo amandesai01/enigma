@@ -32,7 +32,7 @@ function App() {
             <Route exact path="/main">
               <Main />
             </Route>
-            <Route exact path="/SingleTask">
+            <Route exact path="/task/:id">
               <SingleTask />
             </Route>
             <Route exact path="/TaskForm">

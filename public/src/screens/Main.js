@@ -51,7 +51,7 @@ function Main() {
           {tasks.map((task, index) => (
             <Grid item xs={12} sm={4} md={4} key={index}>
               <div style={{ padding:"20px" }}>
-                <CardComponent />
+                <CardComponent task={task} />
               </div>
             </Grid>
           ))}

@@ -1,6 +1,8 @@
 import { Button, Card, CardActions, CardContent, Container, LinearProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios'
 import CardComponent from '../components/CardComponent';
 
 function LinearProgressWithLabel(props) {
@@ -19,16 +21,49 @@ function LinearProgressWithLabel(props) {
 }
 
 function SingleTask() {
+  const { id } = useParams();
+  console.log(id);
+
+  const [task, setTask] = React.useState()
+
+  useEffect(() => {
+  
+    const headers = {
+      token: localStorage.getItem("TOKEN")
+    }
+    axios.post(`http://127.0.0.1:5000/task?task_id=${id}`, {}, {headers})
+    .then(response => {
+      const { STATUS, MSG, TASK } = response.data
+      console.log(response)
+      if(STATUS == "FAIL") {
+        alert(MSG)
+      }
+      else if(STATUS == "OK") {
+        setTask(TASK)
+      }
+      
+    });
+  },[])
+
+  if(!task){
+    return <div>
+      Loading...
+    </div>
+  }
+
   return (
     <Container>
-      <h1> Title of the task </h1>
+      <h1> {task.task_name} </h1>
+      <p>ID: {id}</p>
       <hr></hr>
 
       <h3 style={{
         fontStyle:"italic",
         fontWeight:"lighter"
-      }}>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </h3>
+      }}>{task.task_description}</h3>
 
+      <br></br>
+      <h2>Task Status: {task.task_status}</h2>      
 
       <br></br>
       <h2>Progress</h2>
