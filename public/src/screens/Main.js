@@ -6,11 +6,12 @@ import NavbarComponent from '../components/NavbarComponent';
 import Container from '@mui/material/Container';
 import { Box } from '@mui/system';
 import axios from 'axios';
-
+import { useHistory } from 'react-router-dom';
 
 function Main() {
 
   const [tasks, setTasks] = useState([])
+  const history = useHistory()
 
   
   useEffect(() => {
@@ -34,6 +35,13 @@ function Main() {
       
     });
   },[])
+
+  if(!localStorage.getItem("TOKEN")) {
+    history.pushState("/login")
+    return <div>
+      Loading...
+    </div>
+  }
 
   return (
     <div>

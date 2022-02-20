@@ -17,9 +17,11 @@ import RoutesTemporary from './screens/RoutesTemporary';
 import NavbarComponent from './components/NavbarComponent';
 
 function App() {
+  const [user, setUser] = React.useState()
+  
   return (
     <div>
-     <NavbarComponent />
+     <NavbarComponent user={user} setUser={setUser} />
       <Router>
         <div>
           <Switch>

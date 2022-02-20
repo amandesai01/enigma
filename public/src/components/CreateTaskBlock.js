@@ -6,9 +6,10 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import { useHistory } from 'react-router-dom';
 
 function CreateTaskBlock() {
-
+  let history = useHistory();
     return (
         <Paper
       sx={{
@@ -55,6 +56,9 @@ function CreateTaskBlock() {
 
             <Button 
                 variant="contained"
+                onClick={() => {
+                  history.push("/TaskForm")
+                }}
             >Create New Task</Button>
 
           </Box>
